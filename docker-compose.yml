@@ -1,0 +1,51 @@
+data:
+    image: busybox
+    volumes:
+        - ./data/acme:/var/www/sylius
+        - /vendor
+        - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+        - ~/.composer:/root/.composer
+        - /tmpfs
+
+nginx:
+    image: nginx
+    links:
+        - php
+    volumes_from:
+        - data
+    volumes:
+        - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+        - 8005:80
+
+mysql:
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: sylius_dev
+        MYSQL_USER: sylius
+        MYSQL_PASSWORD: sylius
+    volumes:
+        - ./mysql:/var/lib/mysql
+
+php:
+    build: php
+    working_dir: /var/www/sylius
+    volumes_from:
+        - data
+    links:
+        - mysql
+        - elasticsearch
+        - memcached
+    mem_limit: 2000000000
+
+elasticsearch:
+    image: elasticsearch
+    ports:
+        - 9201:9200
+
+memcached:
+    image: memcached
+
+selenium:
+    image: selenium/standalone-chrome-debug

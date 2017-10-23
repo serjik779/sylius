@@ -1,0 +1,13 @@
+app_admin_slider:
+    resource: |
+        alias: app.slider
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: app_admin_slider
+        vars:
+            all:
+                subheader: app.ui.slider
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

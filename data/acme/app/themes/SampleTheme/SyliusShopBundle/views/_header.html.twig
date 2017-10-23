@@ -1,0 +1,30 @@
+{#<div class="ui basic segment">#}
+    {#<div class="ui three column stackable grid">#}
+        {#<div class="column">#}
+            {#<a href="{{ path('sylius_shop_homepage') }}"><img src="{{ asset('assets/shop/img/logo.png') }}" alt="Sylius logo" class="ui small image" /></a>#}
+        {#</div>#}
+        {#<div class="column">#}
+            {#{{ sonata_block_render_event('sylius.shop.layout.header') }}#}
+        {#</div>#}
+        {#<div class="right aligned column">#}
+            {#{{ render(url('sylius_shop_partial_cart_summary', {'template': '@SyliusShop/Cart/_widget.html.twig'})) }}#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+            </div>
+        </div>
+    </div>
+</div> <!-- End mainmenu area -->

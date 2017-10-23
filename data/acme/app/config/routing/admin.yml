@@ -1,0 +1,8 @@
+app_admin_slider:
+    resource: 'admin/slider.yml'
+app_admin_authors:
+    resource: 'admin/authors.yml'
+app_admin_books:
+    resource: 'admin/books.yml'
+app_admin_libraries:
+    resource: 'admin/libraries.yml'

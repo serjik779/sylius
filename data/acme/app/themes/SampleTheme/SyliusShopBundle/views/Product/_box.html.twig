@@ -1,0 +1,38 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{{ sonata_block_render_event('sylius.shop.product.index.before_box', {'product': product}) }}
+
+{#<div class="ui fluid card">#}
+    {#<a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}" class="blurring dimmable image">#}
+        {#<div class="ui dimmer">#}
+            {#<div class="content">#}
+                {#<div class="center">#}
+                    {#<div class="ui inverted button">{{ 'sylius.ui.view_more'|trans }}</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#{% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}#}
+    {#</a>#}
+    {#<div class="content">#}
+        {#<a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}" class="header sylius-product-name">{{ product.name }}</a>#}
+        {#{% if not product.variants.empty() %}#}
+            {#<div class="sylius-product-price">{{ money.calculatePrice(product|sylius_resolve_variant) }}</div>#}
+        {#{% endif %}#}
+    {#</div>#}
+{#</div>#}
+<div class="col-md-3 col-sm-6">
+    <div class="single-shop-product">
+        <div class="product-upper">
+            <a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}" class="header sylius-product-name">{% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}</a>
+        </div>
+        <h2><a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}" class="header sylius-product-name">{{ product.name }}</a></h2>
+        <div class="product-carousel-price">
+            <ins>{{ money.calculatePrice(product|sylius_resolve_variant) }}</ins> <del>{{ money.calculatePrice(product|sylius_resolve_variant) }}</del>
+        </div>
+
+        <div class="product-option-shop">
+            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+        </div>
+    </div>
+</div>
+{{ sonata_block_render_event('sylius.shop.product.index.after_box', {'product': product}) }}

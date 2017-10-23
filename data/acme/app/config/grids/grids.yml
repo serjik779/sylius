@@ -1,0 +1,5 @@
+imports:
+    - { resource: 'admin/slider.yml' }
+    - { resource: 'admin/authors.yml' }
+    - { resource: 'admin/books.yml' }
+    - { resource: 'admin/libraries.yml' }

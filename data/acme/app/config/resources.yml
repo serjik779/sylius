@@ -1,0 +1,28 @@
+sylius_resource:
+    drivers:
+        - doctrine/orm
+    resources:
+        app.slider:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Slider
+                form: AppBundle\Form\Type\SliderType
+        app.slider_image:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\SliderImage
+                form: AppBundle\Form\Type\SliderImageType
+        app.book:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Book
+                form: AppBundle\Form\Type\BooksType
+        app.libraries:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Library
+        app.authors:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Author
+#                form: AppBundle\Form\Type\AuthorsType

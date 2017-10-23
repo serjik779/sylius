@@ -1,0 +1,14 @@
+{
+  "name": "app/SampleTheme",
+  "authors": [
+    {
+      "name": "Sergey Kalchenko",
+      "email": "belserega@gmail.com"
+    }
+  ],
+  "extra": {
+    "sylius-theme": {
+      "title": "Ustora"
+    }
+  }
+}

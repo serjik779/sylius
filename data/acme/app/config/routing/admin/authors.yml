@@ -1,0 +1,13 @@
+app_admin_authors:
+    resource: |
+        alias: app.authors
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: app_admin_authors
+        vars:
+            all:
+                subheader: app.ui.authors
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

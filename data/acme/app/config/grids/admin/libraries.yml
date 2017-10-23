@@ -1,0 +1,23 @@
+sylius_grid:
+    grids:
+        app_admin_libraries:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: AppBundle\Entity\Library
+            fields:
+                title:
+                    type: string
+                    label: sylius.libraries.title
+                address:
+                    type: string
+                    label: sylius.libraries.address
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

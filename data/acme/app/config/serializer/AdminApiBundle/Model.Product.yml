@@ -1,0 +1,56 @@
+Sylius\Component\Core\Model\Product:
+    exclusion_policy: ALL
+    xml_root_name: product
+    properties:
+        shortDescription:
+            expose: true
+            type: string
+        createdAt:
+            expose: true
+        description:
+            expose: true
+        averageRating:
+            expose: true
+            type: float
+        images:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        channels:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        channelPricing:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        translations:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        reviews:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        productTaxons:
+            expose: true
+            type: array
+            groups: [Detailed]
+        mainTaxon:
+            expose: true
+            groups: [Detailed]
+    relations:
+        -   rel: self
+            href:
+                route: sylius_admin_api_product_show
+                parameters:
+                    code: expr(object.getCode())
+                    version: 1
+        -   rel: variants
+            href:
+                route: sylius_admin_api_product_variant_index
+                parameters:
+                    productCode: expr(object.getCode())
+                    version: 1
+            exclusion:
+                groups: [Default, Detailed]

@@ -1,0 +1,38 @@
+services:
+    update.product:
+         class: AppBundle\Services\UpdateProducts
+         arguments: ['@doctrine.orm.entity_manager']
+    app.form.type.slider:
+        class: AppBundle\Form\Type\SliderType
+        tags:
+            - { name: form.type }
+        arguments: [AppBundle\Entity\Slider]
+    app.form.type.slider_image:
+        class: AppBundle\Form\Type\SliderImageType
+        tags:
+            - { name: form.type }
+        arguments: [AppBundle\Entity\SliderImage]
+    app.form.extension.type.slider:
+        class: AppBundle\Form\Extension\SliderTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: AppBundle\Form\Type\SliderType }
+    sylius.listener.image_upload:
+        class: Sylius\Bundle\CoreBundle\EventListener\ImagesUploadListener
+        arguments: ['@sylius.image_uploader']
+        tags:
+            - { name: kernel.event_listener, event: "sylius.slider.pre_create", method: "uploadImages" }
+            - { name: kernel.event_listener, event: "sylius.slider.pre_update", method: "uploadImages" }
+    app.form.type.books:
+        class: AppBundle\Form\Type\BooksType
+        tags:
+            - { name: form.type }
+        arguments: [AppBundle\Entity\Book]
+#    app.form.type.authors:
+#        class: AppBundle\Form\Type\AuthorsType
+#        tags:
+#            - { name: form.type }
+#        arguments: [AppBundle\Entity\Authors]
+    app.listener.admin.menu_builder:
+        class: AppBundle\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }

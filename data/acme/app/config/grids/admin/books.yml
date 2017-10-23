@@ -1,0 +1,28 @@
+sylius_grid:
+    grids:
+        app_admin_books:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: AppBundle\Entity\Book
+            fields:
+                title:
+                    type: string
+                    label: sylius.books.title
+                description:
+                    type: string
+                    label: sylius.books.description
+                year_issue:
+                    type: datetime
+                    label: sylius.books.year_issue
+                    options:
+                        format: Y
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

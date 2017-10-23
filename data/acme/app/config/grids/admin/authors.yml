@@ -1,0 +1,28 @@
+sylius_grid:
+    grids:
+        app_admin_authors:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: AppBundle\Entity\Author
+            fields:
+                firstname:
+                    type: string
+                    label: sylius.authors.firstname
+                lastname:
+                    type: string
+                    label: sylius.authors.lastname
+                year_birth:
+                    type: datetime
+                    label: sylius.authors.birth
+                    options:
+                        format: Y-m-d
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,13 @@
+app_admin_books:
+    resource: |
+        alias: app.books
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: app_admin_books
+        vars:
+            all:
+                subheader: app.ui.books
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

@@ -1,0 +1,62 @@
+Sylius\Component\Core\Model\ProductVariant:
+    exclusion_policy: ALL
+    xml_root_name: variant
+    properties:
+        onHold:
+            expose: true
+            type: integer
+            groups: [Default, Detailed, DetailedCart]
+        onHand:
+            expose: true
+            type: integer
+            groups: [Default, Detailed, DetailedCart]
+        tracked:
+            expose: true
+            type: boolean
+            groups: [Default, Detailed, DetailedCart]
+        version:
+            expose: true
+            type: integer
+            groups: [Default, Detailed, DetailedCart]
+        width:
+            expose: true
+            type: float
+            groups: [Default, Detailed, DetailedCart]
+        height:
+            expose: true
+            type: float
+            groups: [Default, Detailed, DetailedCart]
+        depth:
+            expose: true
+            type: float
+            groups: [Default, Detailed, DetailedCart]
+        weight:
+            expose: true
+            type: float
+            groups: [Default, Detailed, DetailedCart]
+        taxCategory:
+            expose: true
+            groups: [Default, Detailed, DetailedCart]
+        shippingCategory:
+            expose: true
+            groups: [Default, Detailed, DetailedCart]
+        channelPricings:
+            expose: true
+            type: array
+            groups: [Default, Detailed, DetailedCart]
+    relations:
+        -   rel: self
+            href:
+                route: sylius_admin_api_product_variant_show
+                parameters:
+                    code: expr(object.getCode())
+                    productCode: expr(object.getProduct().getCode())
+                    version: 1
+        -   rel: product
+            href:
+                route: sylius_admin_api_product_show
+                parameters:
+                    code: expr(object.getProduct().getCode())
+                    version: 1
+            exclusion:
+                groups: [Default, Detailed, DetailedCart]

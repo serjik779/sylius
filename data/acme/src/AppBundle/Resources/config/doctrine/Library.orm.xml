@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="AppBundle\Repository\LibraryRepository" table="sylius_library" name="AppBundle\Entity\Library">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="title" type="string" column="title" length="255"/>
+    <field name="address" type="string" column="address" length="255"/>
+    <many-to-many target-entity="AppBundle\Entity\Book" inversed-by="libraries" field="books">
+      <cascade><cascade-all/></cascade>
+      <join-table name="sylius_library_book">
+        <join-columns>
+          <join-column name="library_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="book_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
